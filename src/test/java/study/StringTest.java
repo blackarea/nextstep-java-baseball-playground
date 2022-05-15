@@ -32,6 +32,7 @@ public class StringTest {
     void charAtTest(){
         char c = "abc".charAt(0);
         assertThat(c).isEqualTo('a');
+
         assertThatThrownBy(()->"abc".charAt(3)).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
 
