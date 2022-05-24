@@ -1,5 +1,7 @@
 package before;
 
+import java.util.Scanner;
+
 public class NumberBaseball {
     private static final int baseballCount = 3;
 
@@ -30,9 +32,20 @@ public class NumberBaseball {
         return array;
     }
 
-    private int scanNumber() {
+    public int scanNumber() {
+        Scanner sc = new Scanner(System.in);
+        String inputNumber;
+        try {
+            inputNumber = sc.nextLine();
+        }catch (NumberFormatException e){
+            throw new NumberFormatException("숫자가 아닌 다른 값이 입력 되었습니다.");
+        }
 
-        return 0;
+        if(inputNumber.length() != 3){
+            System.out.println("본 게임은 3자리 숫자의 숫자 야구 게임입니다. 3자리만 입력해주세요");
+            return scanNumber();
+        }
+        return Integer.parseInt(inputNumber);
     }
 
     private void printMessage() {
