@@ -9,8 +9,44 @@ public class NumberBaseball {
     }
 
     public void gameStart(){
-        int[] randomNumber = makeRandomNumberArray();
+        int[] randomNumberArr = makeRandomNumberArray();
+        boolean threeStrike = false;
+        int[] inputNumberArr;
+        while (!threeStrike){
+            printMessage();
+            inputNumberArr = intToArray(scanNumber());
+            threeStrike = isGameOver(judgeResult(inputNumberArr, randomNumberArr));
+        }
+    }
 
+    private String judgeResult(int[] inputNumberArr, int[] randomArr) {
+
+        return null;
+    }
+
+    public int[] intToArray(int threeNumber){
+        int[] array = new int[baseballCount];
+
+        return array;
+    }
+
+    private int scanNumber() {
+
+        return 0;
+    }
+
+    private void printMessage() {
+        System.out.println("숫자를 입력해주세요 : ");
+    }
+
+    private void outMessage(){
+
+    }
+
+    private boolean isGameOver(String message) {
+
+        //message에 따라서 o
+        return false;
     }
 
     public int[] makeRandomNumberArray(){
