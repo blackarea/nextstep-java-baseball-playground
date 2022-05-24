@@ -1,5 +1,6 @@
-package study;
+package before;
 
+import before.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

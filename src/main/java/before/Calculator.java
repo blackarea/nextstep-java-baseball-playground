@@ -1,4 +1,4 @@
-package study;
+package before;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
