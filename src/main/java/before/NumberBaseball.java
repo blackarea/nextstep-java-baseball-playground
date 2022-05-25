@@ -4,38 +4,56 @@ import java.util.Scanner;
 
 public class NumberBaseball {
     private static final int baseballCount = 3;
+    Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        NumberBaseball nb = new NumberBaseball();
+        nb.execute();
     }
 
     public void execute() {
         System.out.println("숫자야구게임에 오신것을 환영합니다.");
-        gameStart();
+        boolean play = true;
+        while (play) {
+            play = playGame();
+        }
     }
 
-    public void gameStart() {
+    public boolean playGame() {
         int[] randomNumberArr = makeRandomNumberArray();
         boolean threeStrike = false;
         int[] inputNumberArr;
         while (!threeStrike) {
-            printMessage();
+            printInputMessage();
             inputNumberArr = intToArray(scanNumber());
             threeStrike = isGameOver(judgeResult(randomNumberArr, inputNumberArr));
         }
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playAgain = sc.nextLine();
+        while (!playAgain.equals("1") && !playAgain.equals("2")){
+            System.out.println("다시 입력해주세요");
+            playAgain = sc.nextLine();
+        }
+        return playAgain.equals("1");
+    }
+
+    public boolean isGameOver(String message) {
+        System.out.println(message);
+        return message.equals("3S");
     }
 
     public String judgeResult(int[] randomArr, int[] inputNumberArr) {
         int strikeCount = judgeStrike(randomArr, inputNumberArr);
         int ballCount = judgeBall(randomArr, inputNumberArr);
 
-        if(ballCount != 0 && strikeCount != 0){
+        if (ballCount != 0 && strikeCount != 0) {
             return ballCount + "B " + strikeCount + "S";
         }
-        if(ballCount != 0){
+        if (ballCount != 0) {
             return ballCount + "B";
         }
-        if(strikeCount != 0){
+        if (strikeCount != 0) {
             return strikeCount + "S";
         }
         return "4B";
@@ -44,7 +62,7 @@ public class NumberBaseball {
     public int judgeStrike(int[] randomArr, int[] inputNumberArr) {
         int count = 0;
         for (int i = 0; i < baseballCount; i++) {
-            if(isSameNumber(randomArr[i], inputNumberArr[i])){
+            if (isSameNumber(randomArr[i], inputNumberArr[i])) {
                 count++;
             }
         }
@@ -54,7 +72,7 @@ public class NumberBaseball {
     public int judgeBall(int[] randomArr, int[] inputNumberArr) {
         int count = 0;
         for (int i = 0; i < baseballCount; i++) {
-            if(containNumberNotSameIndex(randomArr[i], inputNumberArr, i)){
+            if (containNumberNotSameIndex(randomArr[i], inputNumberArr, i)) {
                 count++;
             }
         }
@@ -67,7 +85,7 @@ public class NumberBaseball {
 
     private boolean containNumberNotSameIndex(int number, int[] array, int index) {
         for (int i = 0; i < baseballCount; i++) {
-            if(isSameNumber(number, array[i]) && i != index){
+            if (isSameNumber(number, array[i]) && i != index) {
                 return true;
             }
         }
@@ -84,7 +102,6 @@ public class NumberBaseball {
     }
 
     public int scanNumber() {
-        Scanner sc = new Scanner(System.in);
         String inputString = sc.nextLine();
         int inputNumber;
         try {
@@ -101,18 +118,8 @@ public class NumberBaseball {
         return inputNumber;
     }
 
-    private void printMessage() {
+    private void printInputMessage() {
         System.out.println("숫자를 입력해주세요 : ");
-    }
-
-    private void outMessage() {
-
-    }
-
-    private boolean isGameOver(String message) {
-
-        //message에 따라서 o
-        return false;
     }
 
     public int[] makeRandomNumberArray() {

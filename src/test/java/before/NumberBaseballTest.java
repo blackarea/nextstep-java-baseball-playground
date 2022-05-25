@@ -66,4 +66,9 @@ class NumberBaseballTest {
         assertThat(nb.judgeResult(randomArr, new int[]{1, 3, 6})).isEqualTo("1B 1S");
     }
 
+    @Test
+    void isGameOver(){
+        assertThat(nb.isGameOver("3S")).isTrue();
+        assertThat(nb.isGameOver("2B")).isFalse();
+    }
 }
