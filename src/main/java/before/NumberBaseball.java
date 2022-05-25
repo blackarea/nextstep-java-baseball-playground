@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class NumberBaseball {
     private static final int baseballCount = 3;
-    Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         NumberBaseball nb = new NumberBaseball();
@@ -30,6 +29,8 @@ public class NumberBaseball {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+
+        Scanner sc = new Scanner(System.in);
         String playAgain = sc.nextLine();
         while (!playAgain.equals("1") && !playAgain.equals("2")){
             System.out.println("다시 입력해주세요");
@@ -102,6 +103,7 @@ public class NumberBaseball {
     }
 
     public int scanNumber() {
+        Scanner sc = new Scanner(System.in);
         String inputString = sc.nextLine();
         int inputNumber;
         try {
