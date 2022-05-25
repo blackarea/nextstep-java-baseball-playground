@@ -31,4 +31,10 @@ class NumberBaseballTest {
         inputHandling("123");
         assertThat(nb.scanNumber()).isEqualTo(123);
     }
+
+    @Test
+    void intToArray(){
+        int[] arr = nb.intToArray(123);
+        assertThat(arr).containsExactly(1, 2, 3);
+    }
 }

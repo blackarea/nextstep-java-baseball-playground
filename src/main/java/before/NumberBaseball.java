@@ -32,6 +32,9 @@ public class NumberBaseball {
 
     public int[] intToArray(int threeNumber){
         int[] array = new int[baseballCount];
+        for (int i = 0; i < baseballCount; i++) {
+            array[i] = (int) (threeNumber / Math.pow(10, baseballCount - 1 - i)) % 10;
+        }
 
         return array;
     }
