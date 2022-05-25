@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -21,7 +22,7 @@ public class NumberBaseballExceptionTest {
     @Test
     void wrongInput(){
         inputHandling(" 12");
-        assertThatThrownBy(() -> nb.scanNumber()).isInstanceOf(NumberFormatException.class)
-                .hasMessage("숫자가 아닌 다른 값이 입력 되었습니다.");
+        assertThatThrownBy(() -> nb.scanNumber()).isInstanceOf(NoSuchElementException.class)
+                .hasMessage("No line found");
     }
 }

@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class NumberBaseball {
     private static final int baseballCount = 3;
 
+    public static void main(String[] args) {
+
+    }
+
     public void execute(){
         System.out.println("숫자야구게임에 오신것을 환영합니다.");
         gameStart();
@@ -34,18 +38,20 @@ public class NumberBaseball {
 
     public int scanNumber() {
         Scanner sc = new Scanner(System.in);
-        String inputNumber;
+        String inputString = sc.nextLine();
+        int inputNumber;
         try {
-            inputNumber = sc.nextLine();
+            inputNumber = Integer.parseInt(inputString);
         }catch (NumberFormatException e){
-            throw new NumberFormatException("숫자가 아닌 다른 값이 입력 되었습니다.");
+            System.out.println("숫자가 아닌 다른 값이 입력 되었습니다. 다시 입력해주세요");
+            return scanNumber();
         }
 
-        if(inputNumber.length() != 3){
+        if(inputString.length() != 3){
             System.out.println("본 게임은 3자리 숫자의 숫자 야구 게임입니다. 3자리만 입력해주세요");
             return scanNumber();
         }
-        return Integer.parseInt(inputNumber);
+        return inputNumber;
     }
 
     private void printMessage() {
